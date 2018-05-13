@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>订车</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="com-width order-pos">
+		<div class="order">
+			<ul class="clearfix">
+				<li class="active">在线订车</li>
+				<li>车型分类</li>
+			</ul>
+			<div class="order-content">
+				<div class="show"><!-- 在线订车的内容 -->
+					<form name="order-car" action="" method="post">
+						<p class="select1">取车地点：<select name="order1" id="">
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+						</select></p>
+						<p class="select1">还车地点：<select name="order1" id="">
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+							<option value="1">青岛市宁夏路89号</option>
+						</select></p>
+						<p class="select2">取车时间：<select name="2" id="">
+							<option value="2">2014-08-11</option>
+						</select>
+						<select name="2" id="">
+							<option value="2">13:00</option>
+						</select>
+						</p>
+						<p class="select2">还车时间：<select name="2" id="">
+							<option value="2">2014-08-11</option>
+						</select>
+						<select name="2" id="">
+							<option value="2">13:00</option>
+						</select>
+						</p>
+						<p class="submit"><input type="submit" name="立即订车" value="立即订车"></p>
+					</form>
+				</div>
+				<div>车型分类的内容</div>
+			</div>
+		</div>
+	</div>
+	<script>
+var ul=document.getElementById('nav');
+var aa=ul.getElementsByTagName('a');
+for(var i=0;i<aa.length;i++){
+	aa[i].onclick=function(){
+		for(var i=0;i<aa.length;i++){
+			aa[i].className='';
+			// 清除所有元素类名
+		}
+		this.className='active';
+		// 为点进获得焦点元素添加类名
+	}
+}
+</script>
+</body>
+</html>
