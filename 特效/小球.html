@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>小球碰撞测试</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.bubble{
+/* 			background-color: red; */
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<canvas class="bubble"></canvas>
+<script type="text/javascript">
+		var canvas = document.querySelector(".bubble");
+		var aColor = ["#E1512D","#D8437E","#12C55E","#2C7CF5","#D3A20C"];
+		var aBubble=[];//内存地址存档小球对象
+
+		var canCon = canvas.getContext("2d");//2.1获得canvas的可会知区域
+
+		!function setSize(){
+			window.onresize = arguments.callee;//函数内自调用
+			// document.write(w+','+h);
+			canvas.width = w = window.innerWidth;
+			canvas.height = h = window.innerHeight;
+		}();
+
+
+	/*	setInterval(function(){
+			canCon.beginPath();//笔抬起来
+			canCon.clearRect(0,0,w,h);//擦除画纸上的区域 矩形区域 矩形左上角坐标，宽高
+			canCon.arc(x++,y++,66,0,Math.PI*2);//构思画一个圆 圆心位置x,y 圆的半径
+			canCon.fill();
+		},1000/60);*/
+
+
+  	function random(min,max){//返回一个最小值-最大值之间的值
+			return Math.random()*(max-min)+min;
+		}
+
+		function Bubble(){};//球DNA，构造函数
+
+		Bubble.prototype={
+			init:function(){
+				this.x=random(0,w);//0->w
+				this.y=random(0,h);//0->h
+				this.r=random(3,10);//小球默认半径
+				this.color=aColor[Math.floor(random(0,5))];
+				this.vX=random(-1,1);
+				this.vY=random(-1,1);
+			},
+			draw:function(){
+				canCon.beginPath();//笔抬起来
+				canCon.fillStyle=this.color;//2.2:拿一枝笔蘸上有颜色的墨水
+
+				canCon.arc(this.x,this.y,this.r,0,Math.PI*2);//构思画一个圆 圆心位置x,y 圆的半径
+				canCon.fill();
+			},
+			move:function(){//重新计算位置
+				this.x += this.vX;
+				this.y += this.vY;
+				if(this.x-this.r<=0 || this.x+this.r>=w)
+					this.vX = -this.vX;
+				if(this.y-this.r<=0 || this.y+this.r>=h)
+					this.vY = -this.vY;
+				this.draw();
+			}
+		}
+
+		!function createB(num=999){
+			for(var i=0;i<num;i++){
+				var bubble = new Bubble();//通过小球的DNA创造一个 实例化对象
+				bubble.init();
+				bubble.draw();
+				aBubble.push(bubble);
+			}
+		}();
+		console.log(aBubble);
+		setInterval(function(){
+			canCon.clearRect(0,0,window.innerWidth,window.innerHeight);//擦除画纸上的区域 矩形区域 矩形左上角坐标，宽高
+
+				for(var i=0;i<=aBubble.length;i++){
+				aBubble[i].move();
+			}
+		},10)
+</script>
+</body>
+</html>

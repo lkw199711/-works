@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>example</title>
+	<style type="text/css">
+		.stage{
+			margin: 0 auto;
+			transform-style: preserve-3d;
+			transform: perspective(800px);
+			width: 500px;
+			height: 300px;
+			position: relative;
+			/* border: 1px solid black; */
+			perspective-origin: 50% 50%;
+			/* transition: ; */
+			animation: change 10s linear infinite;
+		}
+		img{
+			position: absolute;
+			left:186px;
+			top: 102px;
+		}
+		img.i1{transform: rotateY(40deg) translateZ(200px);}
+		img.i2{transform: rotateY(80deg) translateZ(200px);}
+		img.i3{transform: rotateY(120deg) translateZ(200px);}
+		img.i4{transform: rotateY(160deg) translateZ(200px);}
+		img.i5{transform: rotateY(200deg) translateZ(200px);}
+		img.i6{transform: rotateY(240deg) translateZ(200px);}
+		img.i7{transform: rotateY(280deg) translateZ(200px);}
+		img.i8{transform: rotateY(320deg) translateZ(200px);}
+		img.i0{transform: rotateY(360deg) translateZ(200px);}
+
+		@keyframes change{
+		0%{
+			transform: perspective(800px ) rotateY(0deg);
+		}
+		100%{
+			transform: perspective(800px ) rotateY(360deg);
+		}
+	</style>
+	<style id="mystyle" type="text/css">
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<img class="i1" src="images/mm1.jpg">
+		<img class="i2" src="images/mm3.jpg">
+		<img class="i3" src="images/mm4.jpg">
+		<img class="i4" src="images/mm6.jpg">
+		<img class="i5" src="images/mm7.jpg">
+		<img class="i6" src="images/mm8.jpg">
+		<img class="i7" src="images/mm10.jpg">
+		<img class="i8" src="images/mm13.jpg">
+		<img class="i0" src="images/mm15.jpg">
+	</div>
+</body>
+<script type="text/javascript">
+	var stage=document.querySelector('.stage');
+	var mystyle=document.querySelector('#mystyle');
+	stage.i=1;
+	stage.onclick=function(){
+			a=40*stage.i;
+			this.style.transform = `perspective(800px ) rotateY(${a}deg)`;
+			//mystyle.innerHTML=`.stage{transform-style: preserve-3d;transform: rotateY(${a}deg)}`;
+		stage.i++;
+	}
+</script>
+</html>

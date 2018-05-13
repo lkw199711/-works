@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雨滴特效</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		canvas{
+			background: black;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='canvas'></canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector('#canvas');
+	var ctx = canvas.getContext('2d');
+	var w,h,t=1; 
+	var x=50,y=0;
+	var arrRain =[];
+	!function setSize(){
+		window.onresize = arguments.callee;
+		canvas.width = w = window.innerWidth;
+		canvas.height = h = window.innerHeight;
+}();
+	function random(min,max){//返回从最小到最大值之间的数
+		return Math.random()*(max-min)+min;
+	}
+	function Rain(){
+
+	}
+	Rain.prototype={
+		init:function(){
+			this.x=random(0,w);
+			this.y=0;
+			this.vy=random(3,4);
+			this.r=1;
+			this.vr=random(0.3,0.5);
+			this.maxR=150;
+			this.h=random(0.8*h,0.9*h);
+		},
+		draw:function(){
+			if(this.y<this.h){
+				ctx.beginPath();
+				//ctx.clearRect(0,0,w,h);
+				ctx.fillStyle="#31f7f7";
+				ctx.fillRect(this.x,this.y,2,10);
+			}else{
+				ctx.beginPath();
+				ctx.strokeStyle="#31f7f7";
+				ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+				ctx.stroke();
+				this.r+=1;
+			}
+		},
+		move:function(){
+			if(this.y<this.h)this.y+=this.vy;
+			else 
+				if(this.r<this.maxR)
+					this.r+=this.vr;
+				else
+					this.init();
+
+			this.draw();
+
+		}
+	}
+	function createRain(num){
+		for(var i=0;i<num;i++){
+			setTimeout(function(){
+				var rain = new Rain();
+				rain.init();
+				rain.move();
+				arrRain.push(rain);
+			},200*i)
+		}
+	}
+	var rain = new Rain();
+	createRain(44);
+	setInterval(function(){
+		ctx.fillStyle="rgba(0,0,0,0.05)";
+		ctx.fillRect(0,0,w,h);
+		for(var item of arrRain){
+			//for of:item变量指的是数组里面每一个元素
+			//for in:item变量指的是数组里面每一个元素的下标
+			//console.log(item);
+			item.move();
+		}
+	},1000/60)
+</script>
+</html>

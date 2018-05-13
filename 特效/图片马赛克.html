@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mrak</title>
+	<style type="text/css">
+		canvas{
+			/* width: 600px;
+			height: 600px; */
+			box-shadow: 0 0 3px black;
+		}
+	</style>
+</head>
+<body>
+	<h4>添加图片，按下鼠标并拖动，即可生成马赛克</h4>
+	<canvas id="canvas" width="600" height="600"></canvas>
+	<input type="file" name="">
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector('canvas');
+	var input = document.querySelector('input');
+	var ctx= canvas.getContext('2d');
+	var img = document.createElement('img');
+	var step=10;/*马赛克宽高*/
+	var down=false;
+	img.src = '';
+	img.onload=function(){
+		ctx.drawImage(img,0,0);
+	}
+	input.onchange=function(){
+		var img = new Image();
+		img.src = window.URL.createObjectURL(input.files[0]);
+		img.onload=function(){
+			//设置canvas大小为图片宽高
+			var width = img.width;
+			var height = img.height;
+			canvas.width = width;
+			canvas.height =height;
+			console.log(width,height);
+			ctx.drawImage(img,0,0);
+		}
+		console.dir(input.files[0]);
+	}
+	function rect(x,y){
+		var dx=Math.floor(x/step)*step,
+				dy=Math.floor(y/step)*step,
+		    c=computercolor(ctx.getImageData(dx,dy,step,step).data);
+		console.log(c);
+		ctx.fillStyle=c;
+		ctx.beginPath();
+		ctx.rect(dx,dy,step,step);
+		ctx.fill();
+	}
+
+	function computercolor(arr){
+		var arrlist = restore(arr,4);//得到一个rgba的一维数组
+		var vr=0,vg=0,vb=0;
+		for(var i=0;i<arrlist.length;i++){
+			vr += arrlist[i][0];
+			vg += arrlist[i][1];
+			vb += arrlist[i][2];
+		}
+		vr = Math.floor(vr/arrlist.length);
+		vg = Math.floor(vg/arrlist.length);
+		vb = Math.floor(vb/arrlist.length);
+		return `rgba(${vr},${vg},${vb},255)`;
+	}
+
+	function restore(arr,size){//数组升维
+		var arrlist = [];
+		var index=0;
+		var l=arr.length/size;
+		for(var i=0;i<l;i++){
+			arrlist.push(arr.slice(index,index+size));
+			index+=size;
+		}
+		return arrlist;
+	}
+	canvas.addEventListener('mousedown',function(e){
+		console.log(e);
+			down=true;
+			rect(e.offsetX,e.offsetY);
+	})
+	canvas.addEventListener('mousemove',function(e){
+		if(down)
+			rect(e.offsetX,e.offsetY);
+	})
+	window.addEventListener('mouseup',function(e){
+			down=false;
+	})
+</script>
+</html>

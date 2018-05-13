@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人作品集</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			position: relative;
+			display: flex;
+			width: 100%;
+			font-family: "微软雅黑";
+		}
+		div.w{
+			display: flex;
+			position: absolute;
+			top: 0;left: 0;
+			z-index: 2;
+			width: 100%;
+		}
+		div.left,div.right{
+			width: 50%;
+		}
+		ul{
+			list-style: none;
+			text-align: center;
+		}
+		ul li{
+			opacity: 0;
+			width: 200px;
+			height: 50px;
+			margin: 10px 0;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 50px;
+			border: 1px solid black;
+			border-radius: 25px;
+			color: black;
+			animation: change 2s linear forwards;
+			/* box-shadow: 0 0 40px 5px #31f7f7 inset; */
+		}
+		a{
+			display: block;
+			text-decoration: none;
+			width: 200px;
+			margin: auto;
+		}
+		@keyframes change{
+			0%{
+				display: none;
+				opacity: 0;
+				background-color: #ff0;
+			}
+			100%{
+				display: block;
+				opacity: 1;
+				background-color: skyblue;}
+			}
+/* 	.h3{
+		color: yellow;
+	} */
+	</style>
+	<!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<div class="w">
+		<div class="left">
+			<ul class="left">
+				
+			</ul>
+		</div>
+
+		<div class="right">
+			<ul class="right">
+				
+			</ul>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+			var left=document.querySelector('ul.left');
+			var right=document.querySelector('ul.right');
+			var a=document.querySelector('ul.left a')
+			var str=`<h3 class="h3">静态页面</h3>
+			<a href="静态页面/凤凰体育/index.html">
+				<li style="animation-delay:0.2s;display=none;">凤凰体育</li>
+			</a>
+			<a href="静态页面/圣德齐家/index.html">
+				<li style="animation-delay:0.4s">圣德齐家</li>
+			</a>
+			<a href="静态页面/微软响应式/index.html">
+				<li style="animation-delay:0.6s">微软响应式</li>
+			</a>
+			<a href="静态页面/酷伴网/index.html">
+				<li style="animation-delay:0.8s">酷伴网</li>
+			</a>
+			<a href="静态页面/合计租车/index.html">
+				<li style="animation-delay:1.0s">合计租车</li>
+			</a>
+			<a href="静态页面/软件购书/index.html">
+				<li style="animation-delay:1.2s">软件购书</li>
+			</a>
+			<a href="静态页面/博雅/index.html">
+				<li style="animation-delay:1.4s">博雅</li>
+			</a>`;
+			var str1=`<h3 class="h3">JS特效</h3><a href="特效/滑动泡泡.html">
+				<li style="animation-delay:0.2s;display=none;">滑动泡泡</li>
+			</a>
+			<a href="特效/模拟点击特效.html">
+				<li style="animation-delay:0.4s">模拟点击特效</li>
+			</a>
+			<a href="特效/淘宝放大镜.html">
+				<li style="animation-delay:0.6s">淘宝放大镜</li>
+			</a>
+			<a href="特效/图片马赛克.html">
+				<li style="animation-delay:0.8s">图片马赛克</li>
+			</a>
+			<a href="特效/小球.html">
+				<li style="animation-delay:1s">小球</li>
+			</a>
+			<a href="特效/雨滴效果.html">
+				<li style="animation-delay:1.2s">雨滴效果</li>
+			</a>
+			<a href="特效/正方体.html">
+				<li style="animation-delay:1.4s">正方体</li>
+			</a>
+			<a href="特效/transform旋转木马.html">
+				<li style="animation-delay:1.6s">transform旋转木马</li>
+			</a>`;
+/*			for(let i=-1;str1[++i];){
+				console.log(str1[i]);
+				setTimeout(function(){
+					left.innerHTML+=str1[i];
+				},i*500)
+			}*/
+			console.log(str);
+			// for(var i=-1;a[++i];)
+			// 	a[i].style.animationDelay=i+"0.5s";
+
+			left.innerHTML+=str;
+			right.innerHTML+=str1;
+	}
+
+</script>
+<!-- <script src="js/雨滴.js"></script> -->
+</html>

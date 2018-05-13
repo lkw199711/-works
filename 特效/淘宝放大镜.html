@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淘宝放大镜</title>
+</head>
+<style type="text/css">
+	body{
+		background: #d8e7fa;
+	}
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.itemarea{
+		position: relative;
+		width: 400px;
+		height: 480px;
+		border: 1px #888 solid;
+		margin: 100px auto;
+	}
+	.itemarea .list{
+		display: flex;
+	}
+	.itemarea .list li{
+		margin: auto;
+	}
+	.itemarea .list .current{
+		border: 2px solid red;
+	}
+	.itemarea .pic{
+		margin-bottom: 15px;
+	}
+	.itemarea .pic img{
+		width: 400px;
+		height: 400px;
+	}
+	.itemarea .pic .cover{
+		position: absolute;
+		left: 0;top: 0;
+		width: 150px;
+		height: 150px;
+		background: url('images/move.png');
+	}
+	.itemarea li img{
+		width: 50px;
+		height: 50px;
+		display: block;
+	}
+	.itemarea .detail{
+		position: absolute;
+		/* display: none; */
+		display: block;
+		top: -1px;left: 400px;
+		width: 400px;
+		height: 400px;
+		border: 1px solid #888;
+		background: url('images/big1.jpg');
+		background-size: 266%;
+		background-position: ;
+	}
+</style>
+<body>
+	<div class="itemarea">
+		<div class="pic">
+			<img src="images/big1.jpg" alt="">
+			<div class="cover"></div>
+		</div>
+		<ul class="list">
+			<li>
+				<img class="current" src="images/big1.jpg" alt="">
+			</li>
+			<li>
+				<img src="images/big2.jpg" alt="">
+			</li>
+			<li>
+				<img src="images/big3.jpg" alt="">
+			</li>
+			<li>
+				<img src="images/big4.jpg" alt="">
+			</li>
+			<li>
+				<img src="images/big5.jpg" alt="">
+			</li>
+			<li>
+				<img src="images/big6.jpg" alt="">
+			</li>
+		</ul>
+		<div class="detail"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	/*
+			1.需求分析
+					1.1鼠标悬浮图片之上，动态修改图片链接
+					1.2鼠标放到大图之上，动态修改右边图片的位置
+						 1.2.1显示一个区域，用于确认鼠标悬浮位置
+						 1.2.2显示右方区域
+	 */
+	var list = document.querySelector('.list'),
+		  img = document.querySelector('.pic img'),
+		  imgs = document.querySelectorAll('.list img'),
+		  pic = document.querySelector('.itemarea .pic'),
+		  cover = document.querySelector('.cover'),
+		  detail = document.querySelector('.detail');
+	console.log(imgs);
+
+	/*时间绑定赋值
+	for(let i=0;i<list.length;i++){
+		list[i].onmouseover= function(){
+			img.src=`images\/big${i+1}.jpg`;
+		}
+	}
+*/
+	list.addEventListener('mouseover',function(e){
+		if(e.target.tagName == 'IMG'){
+			img.src=e.target.src;
+			detail.style.backgroundImage = 'url('+img.src+')';
+			/*搜狗不支持
+			imgs.forEach(function(item){
+				item.className='';
+			})
+			*/
+			for(var i=-1;imgs[++i];)
+				imgs[i].className='';
+			e.target.className="current";
+		}
+	})
+	window.addEventListener('mousemove',function(e){
+		var x = e.clientX,
+				y = e.clientY,
+				cx = pic.getBoundingClientRect().left,
+				cy = pic.getBoundingClientRect().top,
+				tx = x - cx -75,	//tx为cover元素的left
+				ty = y - cy -75;	//ty为cover元素的top
+				//限制cover元素在大图之内 
+				console.log(tx,ty);
+
+				if(tx+75<0 || tx>250+75 || ty+75<0 || ty>250+75)cover.style.display='none';
+				if(tx+75>0 && tx<250+75 && ty+75>0 && ty<250+75)cover.style.display='block';
+
+				if(tx<0)tx=0;
+				if(tx>250)tx=250;
+				if(ty<0)ty=0;
+				if(ty>250)ty=250;
+
+				console.log(tx,ty);
+		detail.style.backgroundPosition = tx/250*100+'% '+ty/250*100+'%'
+		cover.style.left = tx +'px';
+		cover.style.top = ty +'px';
+
+		//console.log(e.clientX,e.clientY);	//client xy鼠标相对于浏览器的坐标 
+		//console.log(pic.getBoundingClientRect().left,pic.getBoundingClientRect().top)	//获取页面元素的宽高和位置
+	})
+</script>
+</html>
