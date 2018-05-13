@@ -1,0 +1,134 @@
+@charset 'UTF-8';
+.head div.hd_right{
+	width: 380px;
+}
+div.w{
+	position: relative;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+div.banner{
+	position: relative;
+}
+.slogan{
+	position: absolute;
+	top: 25px;
+	left: 20px;
+	width: 292px;
+	height: 190px;
+	padding: 20px;
+}
+.slogan p.sl_cont{
+	font-size: 20px;
+	line-height: 30px;
+}
+.slogan .sl_title{
+	line-height: 60px;
+}
+.slogan .sl_detail{
+	line-height: 30px;
+	margin-top: 40px;
+	margin-bottom: 0;
+}
+div.work{
+	margin-top: 30px;
+}
+div.work img{
+	display: block;
+}
+div.work ul{
+	height: auto;
+	display: flex;
+}
+div.work li{
+	position: relative;
+	width: 232px;
+	width: 33%;
+}
+div.work li p{
+position: absolute;
+top: 120px;left: 0;
+}
+div.work img{
+	width: 232px;
+	height: 116px;
+}
+div.text ul{
+	display: flex;
+}
+div.text ul li{
+	width: 33%;
+}
+div.work,div.text{
+	padding-left: 30%;
+}
+/* div.work ul,div.text ul{
+	width: 70%;
+	float: right;
+} */
+.product{
+	position: absolute;
+	top: 700px;left: 0;
+	display: block;
+	width: 30%;
+	float: left;
+	padding: 30px 20px;
+	margin-top: 30px;
+}
+.product li{
+	float: none;
+	margin: 0;
+	text-align: left;
+	font-size: 20px;
+	line-height: 40px;
+	/* font-weight: bold; */
+}
+.commodity div{
+	margin-left: auto;
+	margin-right: auto;
+}
+.follow .fo_left{
+	width: 30%;
+	float: left;
+	overflow: hidden;
+}
+.fo_left .title{
+	margin-bottom: 30px;
+}
+.follow .fo_left p{
+	float: none;
+	display: block;
+}
+.follow .fo_right{
+	width: 65%;
+	float: right;
+}
+/* .follow .last{
+	margin-left: -20px;
+} */
+.follow{
+	margin-top: 80px;
+	padding: 25px;
+}
+.follow p.title{
+	font-size: 26px;
+	line-height: 36px;
+}
+.content{
+	display: flex;
+	width: 100%;
+}
+.content div{
+	float: none;
+	margin: 0 60px;
+}
+.content .left{
+	margin-right: 0;
+}
+.content .left p{
+	width: 180px;
+}
+.bottom p{
+	display: inline-block;
+	margin: 0 20px;
+}

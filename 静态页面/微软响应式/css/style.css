@@ -1,0 +1,180 @@
+@charset 'UTF-8';
+.icon{
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+       margin-top: 8px;
+       margin-right: 5px;
+       margin-left: 5px;
+}
+.pad{
+	display: none;
+}
+body{
+	font-family: '微软雅黑';
+}
+img{
+	width: 100%;
+}
+.follow img{
+	width: 132px;
+}
+.head .hd_right{
+	color: #146FA4;
+	line-height: 32px;
+	font-size: 18px;
+}
+div.w{
+	min-width: 320px;
+}
+.nav_list{
+	position: relative;
+}
+.nav_list li{
+	position: relative;
+	background: #1570A5;
+	color: white;
+	height: 40px;
+	line-height: 40px;
+	margin: 2px 0;
+	padding-left: 12px;
+}
+.nav_list li:after{
+	position: absolute;
+	top: 15px;left: 40px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	content: '>';
+	transform: rotate(90deg);
+}
+div.banner{
+	width: 100%;
+	min-height: 180px;
+}
+.slogan{
+	color: white;
+	background: #1570A5;
+	padding: 10px 40px;
+}
+.slogan .sl_title{
+	font-size: 28px;
+	line-height: 40px;
+}
+.slogan .sl_cont{
+	font-size: 18px;
+	line-height: 19px;
+}
+.slogan .sl_detail{
+	margin-top: 5px;
+}
+.slogan .sl_detail a{
+	font-size: 16px;
+	text-decoration: none;
+	color: white;
+}
+.commodity p{
+	color: #149CCE;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 400;
+	margin: 5px 0;
+}
+.pr_ul li img{
+	display: block;
+}
+.pr_ul li{
+	margin: 20px;
+	float: left;
+	width: 70px;
+	text-align: center;
+	color: #1671B8;
+}
+.follow{
+	background: #1570A5;
+	padding: 8px;
+}
+.follow img{
+	margin-right: 24px;
+	line-height: 32px;
+}
+.fo_right p.title{
+	font-size: 20px;
+}
+.fo_right{
+	font-size: 18px;
+	line-height: 28px;
+	color: white;
+	background: #115E8A;
+	padding: 16px;
+}
+.fo_left p{
+	color: white;
+	font-size: 18px;
+	line-height: 36px;
+}
+.fo_left p.title{
+	font-size: 32px;
+	line-height: 88px;
+}
+.fo_left p.last{
+	margin-bottom: 10px;
+}
+.content{
+		background: #EEEEEE;
+}
+.content .left{
+	padding: 2px;
+}
+.content .left p{
+	background: url('../images/phone_站点.jpg') no-repeat 0px 0px;
+	padding-left: 45px;
+	height: 32px;
+	line-height: 32px;
+	margin: 3px 0;
+}
+.content .right p{
+	color: #1896C9;
+	font-size: 14px;
+	line-height: 26px;
+	padding-left: 4px;
+}
+.content .phone_re p{
+	color: #1896C9;
+	font-size: 14px;
+	line-height: 26px;
+	padding-left: 4px;
+}
+.content p.title{
+	font-size: 16px;
+	background: none;
+	padding-left: 4px;
+	color: #020202;
+	margin-top: 24px;
+}
+.bottom{
+	background: #EEE;
+}
+.bottom .lang{
+	background: url('../images/phone_地球.jpg') no-repeat left;
+	padding-left: 36px;
+	line-height: 30px;
+	height: 30px;
+}
+.bottom p.title{
+	font-size: 18px;
+	line-height: 50px;
+	color: #717171;
+	font-weight: 900;
+}
+.bottom p{
+	font-size: 16px;
+	line-height: 26px;
+}
+.bottom .p_blue{
+	color: #1A85B9;
+}
+.bottom .p_blue span{
+	margin-right: 15px;
+}
